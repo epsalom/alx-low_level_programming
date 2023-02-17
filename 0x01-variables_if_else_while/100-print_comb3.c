@@ -24,8 +24,6 @@ int main(void)
 			putchar(' ');
 		}
 	}
-
-	putchar('\n');
-
-	return (0);
-}M-x delete-trailing-whitespace
+        putchar('\n');
+        return (0);
+}
