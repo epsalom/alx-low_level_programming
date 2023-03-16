@@ -1,51 +1,32 @@
-#include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
 /**
-  * _realloc - ...
-  * @ptr: ...
-  * @old_size: ...
-  * @new_size: ...
-  *
-  * Return: ...
-  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+ *_calloc - allocate memory for an array usingmalloc
+ * @nmemb: number ofelements
+ * @size: size of bytes
+ * Return: pointer
+ */
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *nptr;
+	char *q;
 	unsigned int i;
 
-	if (new_size == old_size)
-		return (ptr);
-
-	if (ptr == NULL)
+	if (nmemb == 0 || size == 0)
 	{
-		nptr = malloc(new_size);
-
-		if (nptr == NULL)
-			return (NULL);
-
-		return (nptr);
-	}
-	else
-	{
-		if (new_size == 0)
-		{
-			free(ptr);
-			return (NULL);
-		}
-	}
-
-	nptr = malloc(new_size);
-
-	if (nptr == NULL)
 		return (NULL);
-
-	for (i = 0; i < old_size && i < new_size; i++)
-	{
-		nptr[i] = ((char *) ptr)[i];
 	}
 
-	free(ptr);
-	return (nptr);
+	q = malloc(nmemb * size);
+
+	if (q == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < nmemb * size; i++)
+	{
+		q[i]  = 0;
+	}
+	return (q);
 }
